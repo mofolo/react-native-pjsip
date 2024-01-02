@@ -108,6 +108,17 @@ RCT_EXPORT_METHOD(declineCall: (int) callId callback:(RCTResponseSenderBlock) ca
     }
 }
 
+RCT_EXPORT_METHOD(busyCall: (int) callId callback:(RCTResponseSenderBlock) callback) {
+    PjSipCall *call = [[PjSipEndpoint instance] findCall:callId];
+    
+    if (call) {
+        [call busy];
+        callback(@[@TRUE]);
+    } else {
+        callback(@[@FALSE, @"Call not found"]);
+    }
+}
+
 RCT_EXPORT_METHOD(answerCall: (int) callId callback:(RCTResponseSenderBlock) callback) {
     PjSipEndpoint* endpoint = [PjSipEndpoint instance];
     PjSipCall *call = [endpoint findCall:callId];
