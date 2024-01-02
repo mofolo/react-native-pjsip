@@ -36,6 +36,10 @@
     pjsua_call_hangup(self.id, PJSIP_SC_DECLINE, NULL, NULL);
 }
 
+- (void) busy {
+    pjsua_call_hangup(self.id, PJSIP_SC_BUSY_HERE, NULL, NULL);
+}
+
 
 - (void)answer {
     // TODO: Add parameters to answer with
