@@ -307,6 +307,25 @@ export default class Endpoint extends EventEmitter {
         });
     }
 
+
+     /**
+     * Hangup call by using Busy Here (486) method.
+     *
+     * @param call {Call} Call instance
+     * @returns {Promise}
+     */
+    busyCall(call) {
+        return new Promise((resolve, reject) => {
+            NativeModules.PjSipModule.busyCall(call.getId(), (successful, data) => {
+                if (successful) {
+                    resolve(data);
+                } else {
+                    reject(data);
+                }
+            });
+        });
+    }
+
     /**
      * Put the specified call on hold. This will send re-INVITE with the appropriate SDP to inform remote that the call is being put on hold.
      *
