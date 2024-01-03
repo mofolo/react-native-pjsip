@@ -37,7 +37,11 @@
 }
 
 - (void) busy {
-    pjsua_call_hangup(self.id, PJSIP_SC_BUSY_HERE, NULL, NULL);
+    
+    pjsua_msg_data msgData;
+    pjsua_msg_data_init(&msgData);
+    
+    pjsua_call_answer(self.id, PJSIP_SC_BUSY_HERE, NULL, &msgData);
 }
 
 
