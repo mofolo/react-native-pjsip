@@ -14,6 +14,8 @@
 - (id)initWithConfig:(NSDictionary *)config {
     self = [super init];
 
+    pj_activesock_enable_iphone_os_bg(PJ_FALSE);
+
     if (self) {
         self.name = config[@"name"] == nil ? [NSNull null] : config[@"name"];
         self.username = config[@"username"];
