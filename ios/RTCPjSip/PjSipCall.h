@@ -11,6 +11,7 @@
 
 - (void)hangup;
 - (void)decline;
+- (void)busy;
 - (void)answer;
 - (void)hold;
 - (void)unhold;
