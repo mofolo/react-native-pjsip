@@ -41,6 +41,9 @@
         
         cfg.vid_in_auto_show = PJ_TRUE;
         cfg.vid_out_auto_transmit = PJ_TRUE;
+
+        //Fixes: IOS16 Error: "Linked against modern SDK, VOIP socket will not wake. Use Local Push Connectivity instead"
+        pj_activesock_enable_iphone_os_bg(PJ_FALSE);
         
         // General settings
         {
